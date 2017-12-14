@@ -1,0 +1,9 @@
+# Notes are the basic form for adding information onto another object
+type Note {
+    word: Word @belongsTo
+    numeral: Numeral @belongsTo
+    correspondence: Correspondence @belongsTo
+    content: String!
+    see: [String]
+    set: [Set] @belongsTo
+}

@@ -1,0 +1,42 @@
+type Note {
+  id: ObjID!
+  word: Word
+  numeral: Numeral
+  correspondence: Correspondence
+  content: String!
+  see: [String]
+  set: [Set]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  notes(lastCreatedAt: Float, limit: Int): [Note!]
+  note(id: ObjID!): Note
+}
+
+input CreateNoteInput {
+  wordId: ObjID
+  numeralId: ObjID
+  correspondenceId: ObjID
+  content: String!
+}
+
+input UpdateNoteInput {
+  wordId: ObjID
+  numeralId: ObjID
+  correspondenceId: ObjID
+  content: String!
+}
+
+extend type Mutation {
+  createNote(input: CreateNoteInput!): Note
+  updateNote(id: ObjID!, input: UpdateNoteInput!): Note
+  removeNote(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  noteCreated: Note
+  noteUpdated: Note
+  noteRemoved: ObjID
+}

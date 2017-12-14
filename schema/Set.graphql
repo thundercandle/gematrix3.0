@@ -1,0 +1,34 @@
+type Set {
+  id: ObjID!
+  title: String
+  notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
+  notes(lastCreatedAt: Float, limit: Int): [Note]
+  correspondences(lastCreatedAt: Float, limit: Int): [Correspondence]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  sets(lastCreatedAt: Float, limit: Int): [Set!]
+  set(id: ObjID!): Set
+}
+
+input CreateSetInput {
+  title: String
+}
+
+input UpdateSetInput {
+  title: String
+}
+
+extend type Mutation {
+  createSet(input: CreateSetInput!): Set
+  updateSet(id: ObjID!, input: UpdateSetInput!): Set
+  removeSet(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  setCreated: Set
+  setUpdated: Set
+  setRemoved: ObjID
+}

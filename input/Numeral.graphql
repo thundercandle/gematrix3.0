@@ -1,0 +1,8 @@
+type Numeral {
+    value: Int!
+    equations: [String!]
+    words: [Word] @hasMany
+    notes: [Note] @hasMany
+    notebooks: [Notebook] @hasAndBelongsToMany
+    letters: [Letter] @hasAndBelongsToMany
+}

@@ -1,0 +1,39 @@
+type Correspondence {
+  id: ObjID!
+  set(lastCreatedAt: Float, limit: Int): [Set]
+  content: String!
+  numeral: Numeral
+  letter: Letter
+  notes(lastCreatedAt: Float, limit: Int): [Note]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  correspondences(lastCreatedAt: Float, limit: Int): [Correspondence!]
+  correspondence(id: ObjID!): Correspondence
+}
+
+input CreateCorrespondenceInput {
+  content: String!
+  numeralId: ObjID
+  letterId: ObjID
+}
+
+input UpdateCorrespondenceInput {
+  content: String!
+  numeralId: ObjID
+  letterId: ObjID
+}
+
+extend type Mutation {
+  createCorrespondence(input: CreateCorrespondenceInput!): Correspondence
+  updateCorrespondence(id: ObjID!, input: UpdateCorrespondenceInput!): Correspondence
+  removeCorrespondence(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  correspondenceCreated: Correspondence
+  correspondenceUpdated: Correspondence
+  correspondenceRemoved: ObjID
+}

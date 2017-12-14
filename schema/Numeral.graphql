@@ -1,0 +1,37 @@
+type Numeral {
+  id: ObjID!
+  value: Int!
+  equations: [String!]
+  words(lastCreatedAt: Float, limit: Int): [Word]
+  notes(lastCreatedAt: Float, limit: Int): [Note]
+  notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
+  letters(lastCreatedAt: Float, limit: Int): [Letter]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  numerals(lastCreatedAt: Float, limit: Int): [Numeral!]
+  numeral(id: ObjID!): Numeral
+  searchByValue(value: Int): Numeral
+}
+
+input CreateNumeralInput {
+  value: Int!
+}
+
+input UpdateNumeralInput {
+  value: Int!
+}
+
+extend type Mutation {
+  createNumeral(input: CreateNumeralInput!): Numeral
+  updateNumeral(id: ObjID!, input: UpdateNumeralInput!): Numeral
+  removeNumeral(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  numeralCreated: Numeral
+  numeralUpdated: Numeral
+  numeralRemoved: ObjID
+}
