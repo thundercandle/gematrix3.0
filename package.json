@@ -5,7 +5,7 @@
   "scripts": {
     "start": "babel-node index.js",
     "start:debug": "nodemon --exec babel-node --inspect -- ./server/index.js",
-    "seed:pfc": "babel-node ./seeds/pfcSeeds.js"
+    "seed:pfc": "babel-node ./seeds/pfcSeed2.0.js"
   },
   "private": true,
   "author": "",

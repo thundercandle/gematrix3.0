@@ -5,6 +5,8 @@ import { ObjectId } from 'mongodb';
 import nodeify from 'nodeify';
 import bcrypt from 'bcrypt';
 
+// TODO Add authorization: https://github.com/tobkle/create-graphql-server-authorization
+
 const KEY = '0.9369297731511517';
 
 async function userFromPayload(request, jwtPayload) {
@@ -27,6 +29,7 @@ export default function addPassport(app) {
   app.use(passport.initialize());
 
   app.post('/login', async (req, res, next) => {
+    console.log(req.body)
     try {
       const { email, password } = req.body;
 

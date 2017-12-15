@@ -3,9 +3,9 @@ const Schema = mongoose.Schema
 
 const SetSchema = new mongoose.Schema({
   title: { type: Schema.Types.String },
-  notebooks: [{ type: Schema.ObjectId, refs: "Notebook"}],
-  notes: [{ type: Schema.ObjectId, refs: "Note"}],
-  correspondence: [{ type: Schema.ObjectId, refs: "Correspondence"}],
+  notebooks: [{ type: Schema.Types.ObjectId, refs: "Notebook"}],
+  notes: [{ type: Schema.Types.ObjectId, refs: "Note"}],
+  correspondence: [{ type: Schema.Types.ObjectId, refs: "Correspondence"}],
   updatedAt: { type: Schema.Types.Number, default: Date.now() },
   createdAt: {type: Schema.Types.Number, default: Date.now()}
 })

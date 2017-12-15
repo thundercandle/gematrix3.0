@@ -22,7 +22,7 @@ const {
   PORT = 3000,
   WS_PORT = parseInt(PORT, 10) + 1,
   MONGO_PORT = 27017,
-  MONGO_URL = `mongodb://localhost:${MONGO_PORT}/gematrix`,
+  MONGO_URL = `mongodb://localhost:${MONGO_PORT}/test`,
 } = process.env;
 
 
@@ -41,7 +41,7 @@ async function startServer() {
   authenticate(app);
 
   app.use('/graphql', (req, res, next) => {
-    passport.authenticate('jwt', { session: false }, (err, user) => {
+    passport.authenticate('jwt', { session: false}, (err, user) => {
       graphqlExpress(() => {
         // Get the query, the same way express-graphql does it
         // https://github.com/graphql/express-graphql/blob/3fa6e68582d6d933d37fa9e841da5d2aa39261cd/src/index.js#L257

@@ -5,4 +5,5 @@ type Numeral {
     notes: [Note] @hasMany
     notebooks: [Notebook] @hasAndBelongsToMany
     letters: [Letter] @hasAndBelongsToMany
+    sephiroth: Sephiroth @hasOne
 }

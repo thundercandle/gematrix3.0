@@ -11,6 +11,11 @@ import Numeral from './models/numeral'
 import Set from './models/set'
 import Correspondence from './models/correspondence'
 
+const paulCase = {
+  title: "Paul Foster Case's Gematria Notebook",
+  description: "Extracted from the gematria notebooks of Paul Foster Case"
+}
+
 
 async function createUser({ email, username, password }) {
   const newUser = new User()
