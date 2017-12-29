@@ -1,9 +1,9 @@
 # A correpondence is a certian symbolic link, part of a set, and is associated with a letter, a number, or both
 type Correspondence {
-    # A correspondence can be added to many sets
-    set: [Set] @hasMany
+    title: String
     content: String!
-    numeral: Numeral @hasOne
-    letter: Letter @hasOne
+    set: Set @belongsTo
+    sephiroth: Sephiroth @belongsTo
+    letter: Letter @belongsTo
     notes: [Note] @hasMany
 }

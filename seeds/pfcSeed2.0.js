@@ -2,12 +2,14 @@ import mongoose from 'mongoose'
 import fs from 'fs'
 import path from 'path'
 import bcrypt from 'bcrypt'
+import CsvReader from 'promised-csv'
 
 import User from './models/user'
 import Notebook from './models/notebook'
 import Note from './models/note'
 import Word from './models/word'
 import Numeral from './models/numeral'
+import Letter from './models/letter'
 import Set from './models/set'
 import Correspondence from './models/correspondence'
 
@@ -45,41 +47,40 @@ const updateModel = async (model, updates) => {
   return updatedModel
 }
 
-const createNote = async (note, type, id) => {
+const createNote = async (note, type, typeId, userId, notebookId) => {
   return updateModel(new Note(), {
     ...note,
-    [`${type}Id`]: id
+    [`${type}`]: typeId,
+    user: userId,
+    notebook: notebookId
   })
 }
 
-const createWord = async (word) => {
+const createWord = async (word, notebookId, userId) => {
   const newWord = new Word()
   let notes = []
 
   if(word.entries && word.entries.length !== 0) {
-    notes = await Promise.all(word.entries.map(note => createNote(note, "word", newWord.id)))
+    notes = await Promise.all(word.entries.map(note => createNote(note, "word", newWord.id, userId)))
   }
 
-  const updatedWord = Object.assign(newWord, {
-    word,
+  return updateModel(newWord, {
+    ...word,
     notes,
+    user: userId,
     language: word.language === '' ? 'hebrew' : word.language
   })
-
-  await updatedWord.save()
-
-  return updatedWord
 }
 
-const createNumeral = async (numeral, notebookId) => {
+const createNumeral = async (numeral, userId, notebookId) => {
   const newNumeral = new Numeral()
   // In the json dump, comments = notes and entries = words
-  const notes = await Promise.all(numeral.comments.map(note => createNote(note, "numeral", newNumeral.id)))
-  const words = await Promise.all(numeral.entries.map(word => createWord(word)))
+  const notes = await Promise.all(numeral.comments.map(note => createNote(note, "numeral", newNumeral.id, userId, notebookId)))
+  const words = await Promise.all(numeral.entries.map(word => createWord(word, notebookId, userId)))
 
   return updateModel(newNumeral, {
     ...numeral,
-    notebooks: [ notebookId ],
+    user: userId,
     notes,
     words
   })
@@ -87,7 +88,7 @@ const createNumeral = async (numeral, notebookId) => {
 
 const createNotebook = async (notebook, userId) => {
   return updateModel(new Notebook(), {
-    userId,
+    user: userId,
     ...notebook
   })
 }
@@ -108,18 +109,36 @@ const createUser = async ({password, notebooks, ...rest}) => {
   })
 }
 
+// WORKING ON
+const loadLetters = async (reader, filePath) => {
+  reader.on('row', data => {
+    console.log(data)
+    return data
+  })
+
+  return reader
+    .read(filePath)
+    .then(value => value)
+}
+
 export const main = async () => {
+  const reader = new CsvReader();
+
   const pfcNotes = fs.readFileSync(path.join(__dirname, "json/pfc-notebook.json"), 'utf8')
-  const jsonData = JSON.parse(pfcNotes);
-  let allNumerals = []
+  const letters = await loadLetters(reader, "/Users/heru/workspace/gematrix3.0/seeds/tables/letters.csv")
+  console.log(letters)
+
+  const jsonData = JSON.parse(pfcNotes)
 
   const user = await createUser(paulCaseUser)
 
   // We are only starting with one notebook...
   const notebookId = user.notebooks[0].id
+  const userId = user.id
 
+  let allNumerals = []
   try {
-    allNumerals = await Promise.all(jsonData.map((rawNumeral) => createNumeral(rawNumeral, notebookId)))
+    // allNumerals = await Promise.all(jsonData.map((rawNumeral) => createNumeral(rawNumeral, userId, notebookId)))
   }
   catch(e) {
     console.log(e);

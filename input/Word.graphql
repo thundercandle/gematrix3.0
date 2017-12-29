@@ -1,8 +1,8 @@
 type Word {
     entry: String!
-    # A word will always value out to a number
     numeral: Numeral! @belongsTo
-    # A word is composed of particular letters that can be accessed
+    notebooks: [Notebook] @hasAndBelongsToMany
+    user: User @belongsTo
     letters: [Letter] @hasMany
     language: String
     pronunciation: String!

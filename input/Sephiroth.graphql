@@ -1,9 +1,8 @@
 type Sephiroth {
-  numeralId: Numeral @belongsTo
-  hebrewWord: Word @hasOne
-  transliteration: String
-  translation: String
+  numeral: Numeral @belongsTo
+  hebrew: Word @hasOne
   notes: [Note] @hasMany
   correspondences: [Correspondence] @hasMany
   sets: [Set] @hasAndBelongsToMany
+  user: User @belongsTo
 }

@@ -3,12 +3,14 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const NoteSchema = new mongoose.Schema({
-  type: { type: Schema.Types.String },
-  wordId: { type: Schema.Types.ObjectId, refs: "Word"},
-  numeralId: { type: Schema.Types.ObjectId, refs: "Numeral"},
+  word: { type: Schema.Types.ObjectId, refs: "Word"},
+  numeral: { type: Schema.Types.ObjectId, refs: "Numeral"},
   correspondence: { type: Schema.Types.ObjectId, refs: "Correspondence"},
+  notebook: { type: Schema.Types.ObjectId, refs: "Notebook"},
+  user: { type: Schema.Types.ObjectId, refs: "User"},
   content: { type: Schema.Types.String },
   see: [{ type: Schema.Types.Number }],
+  set: { type: Schema.Types.ObjectId, refs: "Set"},
   updatedAt: { type: Schema.Types.Number, default: Date.now() },
   createdAt: {type: Schema.Types.Number, default: Date.now() }
 })

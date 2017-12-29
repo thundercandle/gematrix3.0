@@ -46,7 +46,7 @@ A list of the technologies that this project leverages.
 ## Frontend
 
 - React: React will be our primary front-end view systeml, and to allow for easy compn.  We will extend this with either react-primite or react-native-web to allow us to utilize the same primitive types across react and react-native.
-- React-sketch-app: Render react components in sketch.  Build prototypes with code as the single source of truth for design. 
+- React-sketch-app: Render react components in sketch.  Build prototypes with code as the single source of truth for design.
 - React-native: Write iOS and Android apps with JS.  Alongside a project like react-primitives, it allows us to re-use many core components across all platforms.
 - React-primitives: Standardize primitive types across web and native.
 - Expo: Expo will be integrated as a means of building, testing and serving our app. It provides many API's to react-native, helps to submit apps to the app store, and provides many features out of the box.  There is also an optional IDE that can be utilized in place of Atom/Sublime/VSCdode
@@ -153,7 +153,7 @@ type Numeral {
     value: Int!
     user: User
     equations: [String!]
-    collections: [Collection]! 
+    collections: [Collection]!
     words: [Word]
     comments: [Comment]
     letters: [Letter]
@@ -162,7 +162,7 @@ type Numeral {
 ```
 #### Word
 
-A word is assosciated with a language.  It also adds up to a particular number. It can also be part of a particular dictionary, which allows words to be associated together in various ways.
+A word is associated with a language.  It also adds up to a particular number. It can also be part of a particular dictionary, which allows words to be associated together in various ways.
 
 A word is also composed of letters of a language, and each letter can be expanded out to be a full set of correspondences, as well as addition, the displaying of related symbols, etc.
 
@@ -267,5 +267,5 @@ Notes
 
 ### Ideas
 
-- VR: Vibrate and create colored ripples based on the tonal vibration shoot out from you 
-- 
+- VR: Vibrate and create colored ripples based on the tonal vibration shoot out from you
+-

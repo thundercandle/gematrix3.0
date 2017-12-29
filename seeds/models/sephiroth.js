@@ -2,13 +2,12 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const SephirothSchema = new mongoose.Schema({
-  numeralId: { type: Schema.Types.ObjectId, refs: "Numeral"},
+  numeral: { type: Schema.Types.ObjectId, refs: "Numeral"},
   hebrew: { type: Schema.Types.ObjectId, ref: "Word" },
-  translation: { type: Schema.Types.String },
-  pronunciation: { type: Schema.Types.String},
   notes: [ { type: Schema.Types.ObjectId, refs: "Note"}],
   correspondences: [{ type: Schema.Types.ObjectId, refs: "Correspondence"}],
   sets: [ { type: Schema.Types.ObjectId, refs: "Set"}],
+  user: { type: Schema.Types.ObjectId, refs: "User"},
   updatedAt: { type: Schema.Types.Number, default: Date.now() },
   createdAt: { type: Schema.Types.Number, default: Date.now() }
 })

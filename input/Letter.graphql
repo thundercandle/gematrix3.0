@@ -1,11 +1,9 @@
 type Letter {
-    pronunciation: String
-    character: String
-    transliteration: String
-    value: Int
     language: String
-    # Letter will only ever have one number associated with it
-    numeral: Numeral @hasOne
-    # A Letter can have many correpsondences (color, musical note, hebrew letter, etc)
+    word: Word @hasOne
+    character: String
+    value: Int
+    user: User @belongsTo
+    numeral: Numeral @belongsTo
     correspondences: [Correspondence] @hasMany
 }

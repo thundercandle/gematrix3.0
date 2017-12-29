@@ -1,8 +1,7 @@
 type Set {
     title: String
     notebooks: [Notebook] @hasAndBelongsToMany
-    # A set could have many notes added to it
     notes: [Note] @hasMany
-    # A set has many correpondences
     correspondences: [Correspondence] @hasMany
+    user: User @belongsTo
 }

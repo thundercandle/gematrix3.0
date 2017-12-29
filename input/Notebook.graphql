@@ -1,7 +1,7 @@
 type Notebook {
     title: String!
     description: String!
-    user: User! @hasOne
-    numerals: [Numeral] @hasMany
-    sets: [Set] @hasMany
+    user: User! @belongsTo
+    words: [Word] @hasMany,
+    notes: [Note] @hasMany
 }
