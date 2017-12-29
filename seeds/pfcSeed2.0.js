@@ -110,15 +110,30 @@ const createUser = async ({password, notebooks, ...rest}) => {
 }
 
 // WORKING ON
-const loadLetters = async (reader, filePath) => {
-  reader.on('row', data => {
-    console.log(data)
-    return data
-  })
+const loadLetters = (reader, filePath) => {
+  // reader.on('row', data => {
+  //   // console.log(data)
+  //   return data
+  // })
 
   return reader
-    .read(filePath)
-    .then(value => value)
+    .read(filePath, data => data)
+    .then(dataArr => {
+      return dataArr.reduce((acc, row) => {
+        // Initial key map on first row
+        if (acc.keys.length === 0) {
+          acc.keys = row
+          return acc
+        }
+
+        acc.letters.push(acc.keys.reduce((total, key, i, a) => {
+          total[key] = row[i]
+          return total
+        }, {}))
+
+        return acc
+      }, { keys: [], letters: []}).letters
+    })
 }
 
 export const main = async () => {
