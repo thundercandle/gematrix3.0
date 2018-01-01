@@ -4,12 +4,12 @@ const resolvers = {
       return correspondence._id;
     },
 
-    set(correspondence, { lastCreatedAt, limit }, { Correspondence }) {
-      return Correspondence.set(correspondence, { lastCreatedAt, limit });
+    set(correspondence, args, { Correspondence }) {
+      return Correspondence.set(correspondence);
     },
 
-    numeral(correspondence, args, { Correspondence }) {
-      return Correspondence.numeral(correspondence);
+    sephiroth(correspondence, args, { Correspondence }) {
+      return Correspondence.sephiroth(correspondence);
     },
 
     letter(correspondence, args, { Correspondence }) {

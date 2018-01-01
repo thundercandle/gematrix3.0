@@ -6,5 +6,5 @@ type User {
     numerals: [Numeral] @hasMany
     letters: [Letter] @hasMany
     sephiroth: [Sephiroth] @hasMany
-    sets: [Sets] @hasMany
+    sets: [Set] @hasMany
 }

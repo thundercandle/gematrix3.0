@@ -15,6 +15,10 @@ const resolvers = {
     correspondences(set, { lastCreatedAt, limit }, { Set }) {
       return Set.correspondences(set, { lastCreatedAt, limit });
     },
+
+    user(set, args, { Set }) {
+      return Set.user(set);
+    },
   },
   Query: {
     sets(root, { lastCreatedAt, limit }, { Set }) {

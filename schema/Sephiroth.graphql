@@ -1,0 +1,40 @@
+type Sephiroth {
+  id: ObjID!
+  numeral: Numeral
+  hebrew: Word
+  notes(lastCreatedAt: Float, limit: Int): [Note]
+  correspondences(lastCreatedAt: Float, limit: Int): [Correspondence]
+  sets(lastCreatedAt: Float, limit: Int): [Set]
+  user: User
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  sephiroths(lastCreatedAt: Float, limit: Int): [Sephiroth!]
+  sephiroth(id: ObjID!): Sephiroth
+}
+
+input CreateSephirothInput {
+  numeralId: ObjID
+  hebrewId: ObjID
+  userId: ObjID
+}
+
+input UpdateSephirothInput {
+  numeralId: ObjID
+  hebrewId: ObjID
+  userId: ObjID
+}
+
+extend type Mutation {
+  createSephiroth(input: CreateSephirothInput!): Sephiroth
+  updateSephiroth(id: ObjID!, input: UpdateSephirothInput!): Sephiroth
+  removeSephiroth(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  sephirothCreated: Sephiroth
+  sephirothUpdated: Sephiroth
+  sephirothRemoved: ObjID
+}

@@ -7,6 +7,22 @@ const resolvers = {
     notebooks(user, { lastCreatedAt, limit }, { User }) {
       return User.notebooks(user, { lastCreatedAt, limit });
     },
+
+    numerals(user, { lastCreatedAt, limit }, { User }) {
+      return User.numerals(user, { lastCreatedAt, limit });
+    },
+
+    letters(user, { lastCreatedAt, limit }, { User }) {
+      return User.letters(user, { lastCreatedAt, limit });
+    },
+
+    sephiroth(user, { lastCreatedAt, limit }, { User }) {
+      return User.sephiroth(user, { lastCreatedAt, limit });
+    },
+
+    sets(user, { lastCreatedAt, limit }, { User }) {
+      return User.sets(user, { lastCreatedAt, limit });
+    },
   },
   Query: {
     users(root, { lastCreatedAt, limit }, { User }) {

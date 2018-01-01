@@ -2,6 +2,8 @@ type Word {
   id: ObjID!
   entry: String!
   numeral: Numeral!
+  notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
+  user: User
   letters(lastCreatedAt: Float, limit: Int): [Letter]
   language: String
   pronunciation: String!
@@ -20,6 +22,7 @@ extend type Query {
 input CreateWordInput {
   entry: String!
   numeralId: ObjID!
+  userId: ObjID
   language: String
   pronunciation: String!
   definition: String!
@@ -28,6 +31,7 @@ input CreateWordInput {
 input UpdateWordInput {
   entry: String!
   numeralId: ObjID!
+  userId: ObjID
   language: String
   pronunciation: String!
   definition: String!

@@ -19,6 +19,14 @@ export default class Letter {
     }).sort({ createdAt: 1 }).limit(limit).toArray();
   }
 
+  word(letter) {
+    return this.context.Word.findOneById(letter.wordId);
+  }
+
+  user(letter) {
+    return this.context.User.findOneById(letter.userId);
+  }
+
   numeral(letter) {
     return this.context.Numeral.findOneById(letter.numeralId);
   }

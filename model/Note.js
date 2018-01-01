@@ -27,8 +27,16 @@ export default class Note {
     return this.context.Numeral.findOneById(note.numeralId);
   }
 
+  notebook(note) {
+    return this.context.Notebook.findOneById(note.notebookId);
+  }
+
   correspondence(note) {
     return this.context.Correspondence.findOneById(note.correspondenceId);
+  }
+
+  user(note) {
+    return this.context.User.findOneById(note.userId);
   }
 
   set(note) {

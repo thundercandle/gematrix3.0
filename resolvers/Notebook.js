@@ -8,12 +8,12 @@ const resolvers = {
       return Notebook.user(notebook);
     },
 
-    numerals(notebook, { lastCreatedAt, limit }, { Notebook }) {
-      return Notebook.numerals(notebook, { lastCreatedAt, limit });
+    words(notebook, { lastCreatedAt, limit }, { Notebook }) {
+      return Notebook.words(notebook, { lastCreatedAt, limit });
     },
 
-    sets(notebook, { lastCreatedAt, limit }, { Notebook }) {
-      return Notebook.sets(notebook, { lastCreatedAt, limit });
+    notes(notebook, { lastCreatedAt, limit }, { Notebook }) {
+      return Notebook.notes(notebook, { lastCreatedAt, limit });
     },
   },
   Query: {

@@ -1,8 +1,5 @@
 import DataLoader from 'dataloader';
 import findByIds from 'mongo-find-by-ids';
-import bcrypt from 'bcrypt';
-// Set this as appropriate
-const SALT_ROUNDS = 10;
 
 export default class User {
   constructor(context) {
@@ -29,17 +26,39 @@ export default class User {
     }).sort({ createdAt: 1 }).limit(limit).toArray();
   }
 
+  numerals(user, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Numeral.collection.find({
+      userId: user._id,
+      createdAt: { $gt: lastCreatedAt },
+    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
+  letters(user, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Letter.collection.find({
+      userId: user._id,
+      createdAt: { $gt: lastCreatedAt },
+    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
+  sephiroth(user, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Sephiroth.collection.find({
+      userId: user._id,
+      createdAt: { $gt: lastCreatedAt },
+    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
+  sets(user, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Set.collection.find({
+      userId: user._id,
+      createdAt: { $gt: lastCreatedAt },
+    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
   async insert(doc) {
-    // We don't want to store passwords plaintext!
-    const { password, ...rest } = doc;
-    const hash = await bcrypt.hash(password, SALT_ROUNDS);
-    const docToInsert = Object.assign({}, rest, {
-      hash,
+    const docToInsert = Object.assign({}, doc, {
       createdAt: Date.now(),
       updatedAt: Date.now(),
     });
-
-    // This code is unchanged.
     const id = (await this.collection.insertOne(docToInsert)).insertedId;
     this.pubsub.publish('userInserted', await this.findOneById(id));
     return id;

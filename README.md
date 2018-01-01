@@ -20,13 +20,13 @@ After dependencies are installed, you can see the database with `npm run seed:pf
 
 Finally, with your MongoDB server running, run `npm start`.  You can access the interactive graphql at localhost:2368/graphiql.
 
-# Developmet Style
+# Development Style
 
 This app will utilize component driven development, focusing on the creation of core components that can be shared across the full react ecosystem of web, mobile and desktop and act as atomic elements of the design of the various areas.
 
 To accomplish this approach, we will design components utilizing react-sketch app for integration into Sketch, rendering each component utilizing the program, and access live data to do so.
 
-React Storybook will be used to develope the functionality of each component, focusing on state changes and user interactions.
+React Storybook will be used to develop the functionality of each component, focusing on state changes and user interactions.
 
 Jest will be utilized as a testing framework with components to ensure proper state change of components.
 
@@ -61,7 +61,7 @@ A list of the technologies that this project leverages.
 # Design Notes
 The gematrix and its sister project the imaginatrix require an intricate set of data relationships and structural design to make it function as a cohesive and holographic system.  Every element is, in some sense, contained in every other.  English words can be translated into hebrew, hebrew words are associated with a numerical value based on what they add up to. Every symbol can be a word, every word a number, and every number associated with other numbers.
 
-To acheive this requires a conscientous and careful planning.  Creating a language for these different types is important.  GraphQL allows us to create these types with ease, to create relationships between them, and even allowing them to contains themselves.  This allows for powerful querying that a normal rest based API would have a hard time dealing with.
+To achieve this requires a conscientous and careful planning.  Creating a language for these different types is important.  GraphQL allows us to create these types with ease, to create relationships between them, and even allowing them to contains themselves.  This allows for powerful querying that a normal rest based API would have a hard time dealing with.
 
 This should be, ultimately adaptable to any set of symbols or language.  Not all symbols will be able to be easily broken down into a numerical basis.
 

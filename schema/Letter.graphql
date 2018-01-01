@@ -1,10 +1,10 @@
 type Letter {
   id: ObjID!
-  pronunciation: String
-  character: String
-  transliteration: String
-  value: Int
   language: String
+  word: Word
+  character: String
+  value: Int
+  user: User
   numeral: Numeral
   correspondences(lastCreatedAt: Float, limit: Int): [Correspondence]
   createdAt: Float!
@@ -17,20 +17,20 @@ extend type Query {
 }
 
 input CreateLetterInput {
-  pronunciation: String
-  character: String
-  transliteration: String
-  value: Int
   language: String
+  wordId: ObjID
+  character: String
+  value: Int
+  userId: ObjID
   numeralId: ObjID
 }
 
 input UpdateLetterInput {
-  pronunciation: String
-  character: String
-  transliteration: String
-  value: Int
   language: String
+  wordId: ObjID
+  character: String
+  value: Int
+  userId: ObjID
   numeralId: ObjID
 }
 

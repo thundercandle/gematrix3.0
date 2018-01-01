@@ -3,6 +3,11 @@ const resolvers = {
     id(numeral) {
       return numeral._id;
     },
+
+    user(numeral, args, { Numeral }) {
+      return Numeral.user(numeral);
+    },
+
     words(numeral, { lastCreatedAt, limit }, { Numeral }) {
       return Numeral.words(numeral, { lastCreatedAt, limit });
     },
@@ -11,12 +16,12 @@ const resolvers = {
       return Numeral.notes(numeral, { lastCreatedAt, limit });
     },
 
-    notebooks(numeral, { lastCreatedAt, limit }, { Numeral }) {
-      return Numeral.notebooks(numeral, { lastCreatedAt, limit });
+    letter(numeral, args, { Numeral }) {
+      return Numeral.letter(numeral);
     },
 
-    letters(numeral, { lastCreatedAt, limit }, { Numeral }) {
-      return Numeral.letters(numeral, { lastCreatedAt, limit });
+    sephiroth(numeral, args, { Numeral }) {
+      return Numeral.sephiroth(numeral);
     },
   },
   Query: {
@@ -24,19 +29,9 @@ const resolvers = {
       return Numeral.all({ lastCreatedAt, limit });
     },
 
-    numeral(root, { id, value }, { Numeral }) {
-      if (id) {
-        return Numeral.findOneById(id);
-      }
-
-      if (value) {
-        return Numeral.findOne({ value: value})
-      }
+    numeral(root, { id }, { Numeral }) {
+      return Numeral.findOneById(id);
     },
-
-    searchByValue(root, { value }, { Numeral}) {
-      return Numeral.findByValue(value)
-    }
   },
   Mutation: {
     async createNumeral(root, { input }, { Numeral }) {

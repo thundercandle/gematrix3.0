@@ -12,8 +12,16 @@ const resolvers = {
       return Note.numeral(note);
     },
 
+    notebook(note, args, { Note }) {
+      return Note.notebook(note);
+    },
+
     correspondence(note, args, { Note }) {
       return Note.correspondence(note);
+    },
+
+    user(note, args, { Note }) {
+      return Note.user(note);
     },
 
     set(note, args, { Note }) {

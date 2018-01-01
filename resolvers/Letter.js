@@ -4,6 +4,14 @@ const resolvers = {
       return letter._id;
     },
 
+    word(letter, args, { Letter }) {
+      return Letter.word(letter);
+    },
+
+    user(letter, args, { Letter }) {
+      return Letter.user(letter);
+    },
+
     numeral(letter, args, { Letter }) {
       return Letter.numeral(letter);
     },

@@ -38,3 +38,5 @@ typeDefs.push(requireGraphQL('./Set.graphql'));
 typeDefs.push(requireGraphQL('./User.graphql'));
 
 typeDefs.push(requireGraphQL('./Word.graphql'));
+
+typeDefs.push(requireGraphQL('./Sephiroth.graphql'));

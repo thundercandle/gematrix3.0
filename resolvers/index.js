@@ -47,3 +47,6 @@ merge(resolvers, userResolvers);
 
 import wordResolvers from './Word';
 merge(resolvers, wordResolvers);
+
+import sephirothResolvers from './Sephiroth';
+merge(resolvers, sephirothResolvers);

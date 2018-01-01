@@ -3,8 +3,8 @@ type Notebook {
   title: String!
   description: String!
   user: User!
-  numerals(lastCreatedAt: Float, limit: Int): [Numeral]
-  sets(lastCreatedAt: Float, limit: Int): [Set]
+  words(lastCreatedAt: Float, limit: Int): [Word]
+  notes(lastCreatedAt: Float, limit: Int): [Note]
   createdAt: Float!
   updatedAt: Float!
 }

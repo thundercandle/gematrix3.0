@@ -1,8 +1,9 @@
 type Correspondence {
   id: ObjID!
-  set(lastCreatedAt: Float, limit: Int): [Set]
+  title: String
   content: String!
-  numeral: Numeral
+  set: Set
+  sephiroth: Sephiroth
   letter: Letter
   notes(lastCreatedAt: Float, limit: Int): [Note]
   createdAt: Float!
@@ -15,14 +16,18 @@ extend type Query {
 }
 
 input CreateCorrespondenceInput {
+  title: String
   content: String!
-  numeralId: ObjID
+  setId: ObjID
+  sephirothId: ObjID
   letterId: ObjID
 }
 
 input UpdateCorrespondenceInput {
+  title: String
   content: String!
-  numeralId: ObjID
+  setId: ObjID
+  sephirothId: ObjID
   letterId: ObjID
 }
 

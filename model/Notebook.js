@@ -23,15 +23,15 @@ export default class Notebook {
     return this.context.User.findOneById(notebook.userId);
   }
 
-  numerals(notebook, { lastCreatedAt = 0, limit = 10 }) {
-    return this.context.Numeral.collection.find({
+  words(notebook, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Word.collection.find({
       notebookId: notebook._id,
       createdAt: { $gt: lastCreatedAt },
     }).sort({ createdAt: 1 }).limit(limit).toArray();
   }
 
-  sets(notebook, { lastCreatedAt = 0, limit = 10 }) {
-    return this.context.Set.collection.find({
+  notes(notebook, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Note.collection.find({
       notebookId: notebook._id,
       createdAt: { $gt: lastCreatedAt },
     }).sort({ createdAt: 1 }).limit(limit).toArray();

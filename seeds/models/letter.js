@@ -7,11 +7,11 @@ const LetterSchema = new mongoose.Schema({
   character: { type: Schema.Types.String },
   transliteration: { type: Schema.Types.String },
   spelling: { type: Schema.Types.String },
-  word: { type: Schema.Types.ObjectId, refs: "Word"},
-  numeral: { type: Schema.Types.ObjectId, refs: "Numeral"},
+  wordId: { type: Schema.Types.ObjectId, refs: "Word"},
+  numeralId: { type: Schema.Types.ObjectId, refs: "Numeral"},
   value: { type: Schema.Types.Number },
-  user: { type: Schema.Types.ObjectId, refs: "Letter", required: true},
-  correspondences: [{ type: Schema.Types.ObjectId, refs: "Correspondence"}],
+  userId: { type: Schema.Types.ObjectId, refs: "Letter", required: true},
+  correspondenceIds: [{ type: Schema.Types.ObjectId, refs: "Correspondence"}],
   updatedAt: { type: Schema.Types.Number, default: Date.now() },
   createdAt: { type: Schema.Types.Number, default: Date.now() }
 })

@@ -31,3 +31,6 @@ models.User = User;
 
 import Word from './Word';
 models.Word = Word;
+
+import Sephiroth from './Sephiroth';
+models.Sephiroth = Sephiroth;

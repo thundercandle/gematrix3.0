@@ -4,6 +4,10 @@ type User {
   email: String!
   password: String!
   notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
+  numerals(lastCreatedAt: Float, limit: Int): [Numeral]
+  letters(lastCreatedAt: Float, limit: Int): [Letter]
+  sephiroth(lastCreatedAt: Float, limit: Int): [Sephiroth]
+  sets(lastCreatedAt: Float, limit: Int): [Set]
   createdAt: Float!
   updatedAt: Float!
 }

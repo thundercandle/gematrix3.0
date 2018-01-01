@@ -23,6 +23,17 @@ export default class Word {
     return this.context.Numeral.findOneById(word.numeralId);
   }
 
+  notebooks(word, { lastCreatedAt = 0, limit = 10 }) {
+    return this.context.Notebook.collection.find({
+      wordIds: word._id,
+      createdAt: { $gt: lastCreatedAt },
+    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
+  user(word) {
+    return this.context.User.findOneById(word.userId);
+  }
+
   letters(word, { lastCreatedAt = 0, limit = 10 }) {
     return this.context.Letter.collection.find({
       wordId: word._id,

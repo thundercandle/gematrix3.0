@@ -13,14 +13,14 @@ export default class Numeral {
     return this.loader.load(id);
   }
 
-  findByValue(value) {
-    return this.collection.findOne({value: value})
-  }
-
   all({ lastCreatedAt = 0, limit = 10 }) {
     return this.collection.find({
       createdAt: { $gt: lastCreatedAt },
     }).sort({ createdAt: 1 }).limit(limit).toArray();
+  }
+
+  user(numeral) {
+    return this.context.User.findOneById(numeral.userId);
   }
 
   words(numeral, { lastCreatedAt = 0, limit = 10 }) {
@@ -37,18 +37,12 @@ export default class Numeral {
     }).sort({ createdAt: 1 }).limit(limit).toArray();
   }
 
-  notebooks(numeral, { lastCreatedAt = 0, limit = 10 }) {
-    return this.context.Notebook.collection.find({
-      numeralIds: numeral._id,
-      createdAt: { $gt: lastCreatedAt },
-    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  letter(numeral) {
+    return this.context.Letter.findOneById(numeral.letterId);
   }
 
-  letters(numeral, { lastCreatedAt = 0, limit = 10 }) {
-    return this.context.Letter.collection.find({
-      numeralIds: numeral._id,
-      createdAt: { $gt: lastCreatedAt },
-    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  sephiroth(numeral) {
+    return this.context.Sephiroth.findOneById(numeral.sephirothId);
   }
 
   async insert(doc) {

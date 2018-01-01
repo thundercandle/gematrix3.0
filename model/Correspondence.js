@@ -19,15 +19,12 @@ export default class Correspondence {
     }).sort({ createdAt: 1 }).limit(limit).toArray();
   }
 
-  set(correspondence, { lastCreatedAt = 0, limit = 10 }) {
-    return this.context.Set.collection.find({
-      correspondenceId: correspondence._id,
-      createdAt: { $gt: lastCreatedAt },
-    }).sort({ createdAt: 1 }).limit(limit).toArray();
+  set(correspondence) {
+    return this.context.Set.findOneById(correspondence.setId);
   }
 
-  numeral(correspondence) {
-    return this.context.Numeral.findOneById(correspondence.numeralId);
+  sephiroth(correspondence) {
+    return this.context.Sephiroth.findOneById(correspondence.sephirothId);
   }
 
   letter(correspondence) {

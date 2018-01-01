@@ -1,11 +1,12 @@
 type Numeral {
   id: ObjID!
   value: Int!
+  user: User!
   equations: [String!]
   words(lastCreatedAt: Float, limit: Int): [Word]
   notes(lastCreatedAt: Float, limit: Int): [Note]
-  notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
-  letters(lastCreatedAt: Float, limit: Int): [Letter]
+  letter: Letter
+  sephiroth: Sephiroth
   createdAt: Float!
   updatedAt: Float!
 }
@@ -13,15 +14,20 @@ type Numeral {
 extend type Query {
   numerals(lastCreatedAt: Float, limit: Int): [Numeral!]
   numeral(id: ObjID!): Numeral
-  searchByValue(value: Int): Numeral
 }
 
 input CreateNumeralInput {
   value: Int!
+  userId: ObjID!
+  letterId: ObjID
+  sephirothId: ObjID
 }
 
 input UpdateNumeralInput {
   value: Int!
+  userId: ObjID!
+  letterId: ObjID
+  sephirothId: ObjID
 }
 
 extend type Mutation {

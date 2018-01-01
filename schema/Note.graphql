@@ -2,8 +2,10 @@ type Note {
   id: ObjID!
   word: Word
   numeral: Numeral
+  notebook: Notebook
   correspondence: Correspondence
   content: String!
+  user: User
   see: [String]
   set: [Set]
   createdAt: Float!
@@ -18,15 +20,19 @@ extend type Query {
 input CreateNoteInput {
   wordId: ObjID
   numeralId: ObjID
+  notebookId: ObjID
   correspondenceId: ObjID
   content: String!
+  userId: ObjID
 }
 
 input UpdateNoteInput {
   wordId: ObjID
   numeralId: ObjID
+  notebookId: ObjID
   correspondenceId: ObjID
   content: String!
+  userId: ObjID
 }
 
 extend type Mutation {

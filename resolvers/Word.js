@@ -8,6 +8,14 @@ const resolvers = {
       return Word.numeral(word);
     },
 
+    notebooks(word, { lastCreatedAt, limit }, { Word }) {
+      return Word.notebooks(word, { lastCreatedAt, limit });
+    },
+
+    user(word, args, { Word }) {
+      return Word.user(word);
+    },
+
     letters(word, { lastCreatedAt, limit }, { Word }) {
       return Word.letters(word, { lastCreatedAt, limit });
     },
