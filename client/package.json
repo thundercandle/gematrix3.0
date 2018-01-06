@@ -26,9 +26,6 @@
     "ios": "react-native-scripts ios",
     "test-native": "node node_modules/jest/bin/jest.js --watch"
   },
-  "jest": {
-    "preset": "jest-expo"
-  },
   "devDependencies": {
     "jest-expo": "23.0.0",
     "react-native-scripts": "1.8.1",
