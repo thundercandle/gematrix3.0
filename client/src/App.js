@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+
+import Main from './main'
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.box}>
-        <Text style={styles.text}>Hello, world!</Text>
-      </View>
+      <Main/>
     );
   }
 }
