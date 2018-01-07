@@ -6,7 +6,7 @@ class Main extends React.Component {
   render() {
     return (
       <Container>
-        <Text>Hello world</Text>
+
       </Container>
     )
   }
