@@ -1,5 +1,4 @@
 import App from './src/App';
-import { AppRegistry } from 'react-native';
 
 // This is the placeholder for the main app in the stv code.  Allows react native
 // to access it.

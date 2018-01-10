@@ -1,14 +1,19 @@
-import React from 'react';
-import { StyleSheet } from 'react-native';
+import React from 'react'
+import { Text } from 'react-native'
+import { StyleProvider, Container } from 'native-base'
 
-import Main from './main'
+import getTheme from './native-base-theme/components'
 
 class App extends React.Component {
   render() {
     return (
-      <Main/>
-    );
+      <StyleProvider theme={getTheme()}>
+        <Container>
+          <Text>Hello world</Text>
+        </Container>
+      </StyleProvider>
+    )
   }
 }
 
-export default App;
+export default App
