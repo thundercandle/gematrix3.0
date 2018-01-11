@@ -88,6 +88,7 @@ module.exports = {
       'react-native$': 'react-native-web',
       'react-native/Libraries/Renderer/shims/ReactNativePropRegistry': 'react-native-web/dist/modules/ReactNativePropRegistry/index.js',
       'react-router-native': 'react-router',
+      // 'react-native-vector-icons': '@expo/vector-icons'
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -142,12 +143,13 @@ module.exports = {
           {
             test: /\.(js|jsx|mjs)$/,
             loader: require.resolve('babel-loader'),
-            // TODO need better way to add native modules that need compiling
             include: [
               paths.appIndexJs,
               paths.appSrc,
-              ...paths.nativeModules
+              paths.baseTheme,
+              ...paths.nativeModules,
             ],
+            exclude: [paths.nativeSrc],
             options: {
               // This is a feature of `babel-loader` for webpack (not Babel itself).
               // It enables caching results in ./node_modules/.cache/babel-loader/

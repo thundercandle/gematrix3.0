@@ -45,7 +45,7 @@ module.exports = {
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('index.web.js'),
+  appIndexJs: resolveApp('src/index.web.js'),
   appPackageJson: resolveApp('package.json'),
   appSrc: resolveApp('src'),
   yarnLockFile: resolveApp('yarn.lock'),
@@ -53,12 +53,16 @@ module.exports = {
   appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
+  baseTheme: resolveApp('src/native-base-theme'),
+  nativeSrc: resolveApp('src/index.native.js'),
   nativeModules: [
     'node_modules/native-base/dist/src',
     'node_modules/native-base-shoutem-theme/',
     'node_modules/react-native-keyboard-aware-scroll-view',
     'node_modules/react-native-drawer',
     'node_modules/react-native-easy-grid',
-    'node_modules/react-native-vector-icon'
+    'node_modules/react-native-vector-icon',
+    'node_modules/@expo/vector-icons',
+    'node_modules/expo/src'
   ].map(resolveApp)
 };
