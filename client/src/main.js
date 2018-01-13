@@ -11,17 +11,16 @@ import getTheme from './native-base-theme/components'
 import variables from './native-base-theme/variables/platform'
 
 import Numerals from './scenes/numerals'
-//
-// if (typeof process !== 'undefined') {
-//     require('cross-fetch/polyfill');
-// }
-//
+
+// Fix for self.fecth undefined in react-native
 global.self = global;
-//
+
 const isDev = process.env.NODE_ENV === "development"
+//"http://127.0.0.1:3000/graphql?"
+const devApi = "http://192.168.16.22:3000/graphql?"
 
 // Graphql provider setup
-const graphqlApi = isDev ? "http://localhost:3000/graphql?" : process.env.GRAPHQLAPI
+const graphqlApi = isDev ? devApi : process.env.GRAPHQLAPI
 
 const client = new ApolloClient({
   link: new HttpLink({ uri: graphqlApi, fetch }),
@@ -33,7 +32,12 @@ class Main extends React.Component {
     return (
       <ApolloProvider client={client}>
         <StyleProvider style={getTheme(variables)}>
-          <Numerals/>
+          <Container>
+            <Header/>
+            <Content>
+              <Numerals/>
+            </Content>
+          </Container>
         </StyleProvider>
       </ApolloProvider>
 

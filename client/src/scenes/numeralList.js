@@ -18,7 +18,7 @@ const NumeralList = ({data: {loading, error, numerals}}) => {
     <Container>
       <Content>
         {numerals.map(numeral => (
-          <ListItem>
+          <ListItem key={ numeral.id }>
             <Text>{numeral.value}</Text>
           </ListItem>
         ))}
