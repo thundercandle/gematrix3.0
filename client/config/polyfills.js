@@ -11,7 +11,7 @@ if (typeof Promise === 'undefined') {
 // fetch() polyfill for making API calls (works everywhere).
 //
 // if (typeof process !== 'undefined') {
-//     require('cross-fetch/polyfill');
+    require('cross-fetch/polyfill');
 // }
 //
 // if (typeof global.self === undefined) {
