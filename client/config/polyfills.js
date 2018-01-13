@@ -8,8 +8,15 @@ if (typeof Promise === 'undefined') {
   window.Promise = require('promise/lib/es6-extensions.js');
 }
 
-// fetch() polyfill for making API calls.
-require('whatwg-fetch');
+// fetch() polyfill for making API calls (works everywhere).
+//
+// if (typeof process !== 'undefined') {
+//     require('cross-fetch/polyfill');
+// }
+//
+// if (typeof global.self === undefined) {
+//   global.self = global;
+// }
 
 // Object.assign() is commonly used with React.
 // It will use the native implementation if it's present and isn't buggy.
