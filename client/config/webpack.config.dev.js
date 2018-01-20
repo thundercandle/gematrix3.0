@@ -88,7 +88,7 @@ module.exports = {
       'react-native$': 'react-native-web',
       'react-native/Libraries/Renderer/shims/ReactNativePropRegistry': 'react-native-web/dist/modules/ReactNativePropRegistry/index.js',
       'react-router-native': 'react-router',
-      // 'react-native-vector-icons': '@expo/vector-icons'
+      'react-native-vector-icons': '@expo/vector-icons'
     },
     plugins: [
       // Prevents users from importing files from outside of src/ (or node_modules/).
@@ -199,6 +199,12 @@ module.exports = {
                 },
               },
             ],
+          },
+          // Loads fonts for use with react-native-vector-icons on web
+          {
+            test: /\.ttf$/,
+            loader: "url-loader", // or directly file-loader
+            include: path.resolve(__dirname, "node_modules/react-native-vector-icons"),
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
           // When you `import` an asset, you get its (virtual) filename.
