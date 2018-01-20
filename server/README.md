@@ -46,11 +46,9 @@ A list of the technologies that this project leverages.
 ## Frontend
 
 - React: React will be our primary front-end view systeml, and to allow for easy compn.  We will extend this with either react-primite or react-native-web to allow us to utilize the same primitive types across react and react-native.
-- React-sketch-app: Render react components in sketch.  Build prototypes with code as the single source of truth for design.
 - React-native: Write iOS and Android apps with JS.  Alongside a project like react-primitives, it allows us to re-use many core components across all platforms.
-- React-primitives: Standardize primitive types across web and native.
 - Expo: Expo will be integrated as a means of building, testing and serving our app. It provides many API's to react-native, helps to submit apps to the app store, and provides many features out of the box.  There is also an optional IDE that can be utilized in place of Atom/Sublime/VSCdode
-- Apollo-link: Local state will be managed alongside remote state utilizing apollo-link.  Apollo-link gices us interfaces ot various resources, including HTTP, Websockets and local storage.  We can remove the need for redux completely by utilizing apollo-link.  Since Link is built on top of redux, we will still get access to the amazing resource library available
+- Apollo-link: Local state will be managed alongside remote state utilizing apollo-link.  Apollo-link gives us interfaces to various resources, including HTTP, Websockets and local storage.  We can remove the need for redux completely by utilizing apollo-link.  Since Link is built on top of redux, we will still get access to the amazing resource library available
 - Apollo-client: This is our GraphQL client of choice.  It integrates cleanly with components, and replaces many of the uses that redux has had.
 - React-navigation:  Navigation of choice.  Good state management.  Works across web and native.
 
@@ -61,7 +59,7 @@ A list of the technologies that this project leverages.
 # Design Notes
 The gematrix and its sister project the imaginatrix require an intricate set of data relationships and structural design to make it function as a cohesive and holographic system.  Every element is, in some sense, contained in every other.  English words can be translated into hebrew, hebrew words are associated with a numerical value based on what they add up to. Every symbol can be a word, every word a number, and every number associated with other numbers.
 
-To acheive this requires a conscientous and careful planning.  Creating a language for these different types is important.  GraphQL allows us to create these types with ease, to create relationships between them, and even allowing them to contains themselves.  This allows for powerful querying that a normal rest based API would have a hard time dealing with.
+To achieve this requires a conscientous and careful planning.  Creating a language for these different types is important.  GraphQL allows us to create these types with ease, to create relationships between them, and even allowing them to contains themselves.  This allows for powerful querying that a normal rest based API would have a hard time dealing with.
 
 This should be, ultimately adaptable to any set of symbols or language.  Not all symbols will be able to be easily broken down into a numerical basis.
 
@@ -88,15 +86,13 @@ The schema should be coded to autoload based on file type endings in the various
         ├── user
         │   ├── user.model.js
         │   ├── user.connector.js
-        │   ├── user.mutations.mutation
-        │   ├── user.query.mutation
-        │   └── user.type.mutation
+        │   ├── user.mutation.js
+        │   ├── user.query.js
         ├── numeral
         │   ├── numeral.model.js
-        │   ├── numeral.connector.mutation
-        │   ├── numeral.mutations.mutation
-        │   ├── numeral.query.mutation
-        │   └── numeral.type.mutation
+        │   ├── numeral.connector.js
+        │   ├── numeral.mutation.js
+        │   ├── numeral.query.js
         ├── common
         │   ├── directives.mutation
         │   ├── enum.mutation
