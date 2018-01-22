@@ -1,0 +1,7 @@
+type Set {
+    title: String
+    notebooks: [Notebook] @hasAndBelongsToMany
+    notes: [Note] @hasMany
+    correspondences: [Correspondence] @hasMany
+    user: User @belongsTo
+}

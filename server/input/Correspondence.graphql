@@ -1,0 +1,9 @@
+# A correpondence is a certian symbolic link, part of a set, and is associated with a letter, a number, or both
+type Correspondence {
+    title: String
+    content: String!
+    set: Set @belongsTo
+    sephiroth: Sephiroth @belongsTo
+    letter: Letter @belongsTo
+    notes: [Note] @hasMany
+}

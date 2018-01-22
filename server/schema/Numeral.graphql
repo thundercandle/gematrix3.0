@@ -1,0 +1,43 @@
+type Numeral {
+  id: ObjID!
+  value: Int!
+  user: User!
+  equations: [String!]
+  words(lastCreatedAt: Float, limit: Int): [Word]
+  notes(lastCreatedAt: Float, limit: Int): [Note]
+  letter: Letter
+  sephiroth: Sephiroth
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  numerals(lastCreatedAt: Float, limit: Int): [Numeral!]
+  numeral(id: ObjID!): Numeral
+}
+
+input CreateNumeralInput {
+  value: Int!
+  userId: ObjID!
+  letterId: ObjID
+  sephirothId: ObjID
+}
+
+input UpdateNumeralInput {
+  value: Int!
+  userId: ObjID!
+  letterId: ObjID
+  sephirothId: ObjID
+}
+
+extend type Mutation {
+  createNumeral(input: CreateNumeralInput!): Numeral
+  updateNumeral(id: ObjID!, input: UpdateNumeralInput!): Numeral
+  removeNumeral(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  numeralCreated: Numeral
+  numeralUpdated: Numeral
+  numeralRemoved: ObjID
+}

@@ -1,0 +1,10 @@
+type User {
+    username: String!
+    email: String!
+    password: String!
+    notebooks: [Notebook] @hasMany
+    numerals: [Numeral] @hasMany
+    letters: [Letter] @hasMany
+    sephiroth: [Sephiroth] @hasMany
+    sets: [Set] @hasMany
+}

@@ -1,0 +1,23 @@
+english,path,character,language,transliteration,translation,spelling,pronunciation,value
+A,11,U+05D0,hebrew,ALP,Ox,,Alpeh,1
+B,12,U+05D1,hebrew,BITh,House,,Beth,2
+G,13,U+05D2,hebrew,GML,Camel,,Gimel,3
+D,14,U+05D3,hebrew,DLTh,Door,,Daleth,4
+H,15,U+05D4,hebrew,HH,Window,,He,5
+V,16,U+05D5,hebrew,VV,Nail,,Vav,6
+Z,17,U+05D6,hebrew,ZIN,Sword,,Zain,7
+Ch,18,U+05D7,hebrew,CITh,Fence,,Cheth,8
+T,19,U+05D8,hebrew,TITh,Serpent,,Teth,9
+I,20,U+05D9,hebrew,IVD,Open Hand,,Yod,10
+K,21,U+05DB,hebrew,KP,"Closed Hand, Fist",,Kaph,20
+L,22,U+05DC,hebrew,LMD,Ox-goad,,Lamed,30
+M,23,U+05DE,hebrew,MIM,"Water, seas",,Mem,40
+N,24,U+05E0,hebrew,NVN,Fish,,Nun,50
+S,25,U+05E1,hebrew,SMK,"Prop, tent peg",,Samek,60
+O,26,U+05E2,hebrew,OIN,Eye,,Aayin,70
+P,27,U+05E4,hebrew,PH,Mouth,,Peh,80
+Tz,28,U+05E6,hebrew,TzDI,Fish-hook,,Tzaddi,90
+Q,29,U+05E7,hebrew,QVP,Back of the head,,Qoph,100
+R,30,U+05E8,hebrew,RISh,Face,,Resh,200
+Sh,31,U+05E9,hebrew,ShIN,Tooth,,Shin,300
+Th,32,U+05EA,hebrew,TV,"Tav cross, mark, signature",,Tav,400

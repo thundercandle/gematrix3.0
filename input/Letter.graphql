@@ -1,9 +1,0 @@
-type Letter {
-    language: String
-    word: Word @hasOne
-    character: String
-    value: Int
-    user: User @belongsTo
-    numeral: Numeral @belongsTo
-    correspondences: [Correspondence] @hasMany
-}

@@ -1,0 +1,9 @@
+type Numeral {
+    value: Int!
+    user: User! @belongsTo
+    equations: [String!]
+    words: [Word] @hasMany
+    notes: [Note] @hasMany
+    letter: Letter @hasOne
+    sephiroth: Sephiroth @hasOne
+}

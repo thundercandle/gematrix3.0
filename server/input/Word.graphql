@@ -1,0 +1,12 @@
+type Word {
+    entry: String!
+    numeral: Numeral! @belongsTo
+    notebooks: [Notebook] @hasAndBelongsToMany
+    user: User @belongsTo
+    letters: [Letter] @hasMany
+    language: String
+    pronunciation: String!
+    definition: String!
+    notes: [Note] @hasMany
+    see: [String]
+}

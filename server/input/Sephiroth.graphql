@@ -1,0 +1,8 @@
+type Sephiroth {
+  numeral: Numeral @belongsTo
+  hebrew: Word @hasOne
+  notes: [Note] @hasMany
+  correspondences: [Correspondence] @hasMany
+  sets: [Set] @hasAndBelongsToMany
+  user: User @belongsTo
+}

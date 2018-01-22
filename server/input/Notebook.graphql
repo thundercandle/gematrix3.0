@@ -1,0 +1,7 @@
+type Notebook {
+    title: String!
+    description: String!
+    user: User! @belongsTo
+    words: [Word] @hasMany,
+    notes: [Note] @hasMany
+}

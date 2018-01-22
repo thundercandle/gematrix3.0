@@ -1,0 +1,42 @@
+type User {
+  id: ObjID!
+  username: String!
+  email: String!
+  password: String!
+  notebooks(lastCreatedAt: Float, limit: Int): [Notebook]
+  numerals(lastCreatedAt: Float, limit: Int): [Numeral]
+  letters(lastCreatedAt: Float, limit: Int): [Letter]
+  sephiroth(lastCreatedAt: Float, limit: Int): [Sephiroth]
+  sets(lastCreatedAt: Float, limit: Int): [Set]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  users(lastCreatedAt: Float, limit: Int): [User!]
+  user(id: ObjID!): User
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+input UpdateUserInput {
+  username: String!
+  email: String!
+  password: String!
+}
+
+extend type Mutation {
+  createUser(input: CreateUserInput!): User
+  updateUser(id: ObjID!, input: UpdateUserInput!): User
+  removeUser(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  userCreated: User
+  userUpdated: User
+  userRemoved: ObjID
+}

@@ -1,0 +1,47 @@
+type Letter {
+  id: ObjID!
+  language: String
+  word: Word
+  character: String
+  value: Int
+  user: User
+  numeral: Numeral
+  correspondences(lastCreatedAt: Float, limit: Int): [Correspondence]
+  createdAt: Float!
+  updatedAt: Float!
+}
+
+extend type Query {
+  letters(lastCreatedAt: Float, limit: Int): [Letter!]
+  letter(id: ObjID!): Letter
+}
+
+input CreateLetterInput {
+  language: String
+  wordId: ObjID
+  character: String
+  value: Int
+  userId: ObjID
+  numeralId: ObjID
+}
+
+input UpdateLetterInput {
+  language: String
+  wordId: ObjID
+  character: String
+  value: Int
+  userId: ObjID
+  numeralId: ObjID
+}
+
+extend type Mutation {
+  createLetter(input: CreateLetterInput!): Letter
+  updateLetter(id: ObjID!, input: UpdateLetterInput!): Letter
+  removeLetter(id: ObjID!): Boolean
+}
+
+extend type Subscription {
+  letterCreated: Letter
+  letterUpdated: Letter
+  letterRemoved: ObjID
+}
