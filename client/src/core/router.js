@@ -1,9 +1,7 @@
 import { Platform } from 'react-native'
 
-//
-// const routerApi = Platform.OS === 'web' ? WebRouter : NativeRouter
-// const mainRouter = Platform.OS === 'web' ? WebRouter.BrowserRouter : NativeRouter.NativeRouter
+const isWeb = Platform.OS === 'web'
+const baseRouter = isWeb ? require('react-router-dom') : require('react-router-native')
 
-const MainRouter = Platform.OS === 'web' ? require('react-router-dom') : require('react-router-native')
-
-export default MainRouter
+export const Router = isWeb ? baseRouter.BrowserRouter : baseRouter.NativeRouter
+export const Link = baseRouter.Link

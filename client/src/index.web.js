@@ -11,6 +11,8 @@ const iconFontStyles = `@font-face {
 // Create stylesheet
 const style = document.createElement('style');
 style.type = 'text/css';
+
+console.log(iconFontStyles)
 if (style.styleSheet) {
   style.styleSheet.cssText = iconFontStyles;
 } else {

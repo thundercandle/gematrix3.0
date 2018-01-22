@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as Expo from 'expo';
 
-import { Setup }from './core'
+import { Setup } from './core';
 
 class NativeApp extends Component {
   constructor() {
