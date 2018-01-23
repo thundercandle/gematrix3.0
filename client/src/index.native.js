@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import * as Expo from 'expo';
+import React, { Component } from 'react'
+import * as Expo from 'expo'
 
-import { Setup } from './core';
+import App from './app'
 
 class NativeApp extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
       isReady: false
-    };
+    }
   }
 
   componentWillMount() {
-    this.loadFonts();
+    this.loadFonts()
   }
 
   async loadFonts() {
@@ -20,17 +20,17 @@ class NativeApp extends Component {
       Roboto: require("native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("native-base/Fonts/Roboto_medium.ttf"),
       Ionicons: require("@expo/vector-icons/fonts/Ionicons.ttf")
-    });
-    this.setState({ isReady: true });
+    })
+    this.setState({ isReady: true })
   }
 
   render() {
     if (!this.state.isReady) {
-      return <Expo.AppLoading />;
+      return <Expo.AppLoading />
     }
     return (
-      <Setup/>
-    );
+      <App/>
+    )
   }
 }
 

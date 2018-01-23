@@ -1,8 +1,9 @@
 import { AppRegistry } from 'react-native'
 import iconFont from 'react-native-vector-icons/Fonts/Ionicons.ttf';
-import { Setup } from './core'
 
-// This is all a fix to get react-native-vectori-icons working on web
+import App from './app'
+
+// This is all a fix to get react-native-vector-icons working on web
 const iconFontStyles = `@font-face {
   src: url(${iconFont});
   font-family: Ionicons;
@@ -22,5 +23,5 @@ if (style.styleSheet) {
 // Inject stylesheet
 document.head.appendChild(style);
 
-AppRegistry.registerComponent('Setup', () => Setup)
-AppRegistry.runApplication('Setup', { rootTag: document.getElementById('root') })
+AppRegistry.registerComponent('App', () => App)
+AppRegistry.runApplication('App', { rootTag: document.getElementById('root') })
