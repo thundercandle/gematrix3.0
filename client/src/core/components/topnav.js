@@ -25,10 +25,3 @@ export const TopNav = ({ location, history }) => (
     </Right>
   </Header>
 )
-
-const styles = StyleSheet.create({
-  icon: {
-    position: "relative",
-    right: 10
-  }
-})
