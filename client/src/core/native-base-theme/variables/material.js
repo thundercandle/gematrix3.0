@@ -20,7 +20,7 @@ export default {
   btnUppercaseAndroidText: true,
 
   // Badge
-  badgeBg: "#ED1727",
+  badgeBg: "#ed1717",
   badgeColor: "#fff",
   badgePadding: platform === "ios" ? 3 : 0,
 
@@ -95,7 +95,7 @@ export default {
   checkboxTickColor: "#fff",
 
   // Color
-  brandPrimary: "#3F51B5",
+  brandPrimary: "#4b2abd",
   brandInfo: "#3F57D3",
   brandSuccess: "#5cb85c",
   brandDanger: "#d9534f",
@@ -131,7 +131,7 @@ export default {
 
   // Header
   toolbarBtnColor: "#fff",
-  toolbarDefaultBg: platform === "ios" ? "#F8F8F8" : "#3F51B5",
+  toolbarDefaultBg: platform === "ios" ? "#4b2abd" : "#4b2abd",
   toolbarHeight: platform === "ios" ? (isIphoneX ? 88 : 64) : 56,
   toolbarSearchIconSize: platform === "ios" ? 20 : 23,
   toolbarInputColor: "#fff",
