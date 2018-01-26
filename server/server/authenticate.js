@@ -29,7 +29,6 @@ export default function addPassport(app) {
   app.use(passport.initialize());
 
   app.post('/login', async (req, res, next) => {
-    console.log(req.body)
     try {
       const { email, password } = req.body;
 

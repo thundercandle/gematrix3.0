@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Route } from 'react-router-native'
 import { Container } from 'native-base'
 import { TopNav } from './../components'

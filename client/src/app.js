@@ -1,12 +1,8 @@
 import React, { Component } from 'react'
 import { Switch } from 'react-router-native'
 
-import { Setup, CoreLayout } from './core'
-import { Login } from './auth'
-
-
-// NOTES
-// Need layout helpers for centering native-base components on desktop
+import { Setup, CoreLayout } from './modules/core'
+import { Login } from './modules/auth'
 
 class App extends Component {
   render() {
