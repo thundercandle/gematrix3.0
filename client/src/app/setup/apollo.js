@@ -9,8 +9,8 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'cross-fetch'
 import merge from 'lodash.merge';
 
-import { authResolvers } from './../../auth'
-import { GRAPHQLAPI } from './../config'
+// I can do this with barelling, but might be better to separate these concerns
+import { authResolvers, GRAPHQLAPI } from './../../modules'
 
 const cache = new InMemoryCache()
 const httpLink = new HttpLink({ uri: GRAPHQLAPI, fetch })

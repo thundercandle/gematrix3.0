@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Router } from './../lib'
+import { Router } from './../../modules'
 import ApolloProvider from './apollo'
 import StyleProvider from './styleProvider'
 
@@ -8,6 +8,11 @@ import StyleProvider from './styleProvider'
 global.self = global;
 
 export class Setup extends Component {
+  constructor(props) {
+    super(props)
+    console.log("testing")
+  }
+
   render() {
     return (
       <ApolloProvider>

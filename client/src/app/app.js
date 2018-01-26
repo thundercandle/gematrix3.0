@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { Switch } from 'react-router-native'
 
-import { Setup, CoreLayout } from './modules/core'
-import { Login } from './modules/auth'
+import { Setup } from './setup'
+import { Login, CoreLayout } from './../modules'
 
-class App extends Component {
+export class App extends Component {
   render() {
+    console.log("Setup", Setup)
+    console.log("Layout", CoreLayout)
     return (
       // Setup initializes all the core functionality, apollo, styling and router
       <Setup>
@@ -16,5 +18,3 @@ class App extends Component {
     )
   }
 }
-
-export default App
