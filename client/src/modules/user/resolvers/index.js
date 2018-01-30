@@ -1,4 +1,4 @@
-import fetch from 'cross-fetch'
+// import fetch from 'cross-fetch'
 
 import { LOGINAPI } from './../../core'
 
@@ -8,7 +8,7 @@ export const authResolvers = {
       __typename: 'login',
       token: null,
       status: null,
-      errors: null,
+      error: null,
       isAuthenticated: false,
     }
   },
@@ -34,8 +34,7 @@ export const authResolvers = {
             return {
               __typename: 'login',
               token: null,
-              status: result.status,
-              errors: result.statusText,
+              error: true,
               isAuthenticated: false,
             }
           } else {
@@ -43,13 +42,13 @@ export const authResolvers = {
 
             const data = {
               __typename: 'login',
-              token: body,
-              status: result.status,
-              errors: null,
+              token: body.token,
+              error: null,
               isAuthenticated: true,
             }
 
             cache.writeData({ data })
+            
             return data
           }
         } catch(e) {

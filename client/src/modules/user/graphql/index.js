@@ -31,7 +31,6 @@ const mutationResultToLogin = () =>
       throw new Error("Failed to mutate")
     }
 
-    console.log(result)
     return result.data.login
   }
 
