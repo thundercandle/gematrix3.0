@@ -4,7 +4,6 @@ import { graphql } from 'react-apollo'
 
 class LoginComponent extends Component {
   triggerMutation = () => {
-    console.log("triggering")
     const { email, password, onLogin } = this.props
     return onLogin(email, password)
   }
@@ -22,11 +21,7 @@ const LOGIN_MUTATION = gql`
     $email: String!,
     $password: String!
   ) {
-    login(email: $email, password: $password) @client {
-      token,
-      isAuthenticated,
-      currentUser
-    }
+    login(email: $email, password: $password) @client
   }
 `
 
@@ -36,8 +31,7 @@ const mutationResultToLogin = () =>
       throw new Error("Failed to mutate")
     }
 
-    console.log(result.data)
-
+    console.log(result)
     return result.data.login
   }
 
@@ -45,7 +39,6 @@ const mutationResultToLogin = () =>
 // to make it accessible in the components props
 const mapMutationToProps = ({mutate}) => ({
   onLogin: (email, password) => {
-    console.log("on login!")
     return mutate({
       variables: { email, password }
     }).then(mutationResultToLogin())

@@ -21,8 +21,7 @@ const stateLink = withClientState({
 
 const client = new ApolloClient({
   link: ApolloLink.from([stateLink, httpLink]),
-  cache,
-  storage: AsyncStorage
+  cache
 })
 
 export default ({ children }) => (

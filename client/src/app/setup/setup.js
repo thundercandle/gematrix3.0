@@ -8,11 +8,6 @@ import StyleProvider from './styleProvider'
 global.self = global;
 
 export class Setup extends Component {
-  constructor(props) {
-    super(props)
-    console.log("testing")
-  }
-
   render() {
     return (
       <ApolloProvider>
