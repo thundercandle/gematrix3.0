@@ -15,11 +15,6 @@ import fetch from 'cross-fetch'
 // Custom router to work with web and mobile
 import { Router } from './../modules'
 
-// Native-base
-import { StyleProvider } from 'native-base'
-import getTheme from './native-base-theme/components'
-import variables from './native-base-theme/variables/material'
-
 // I can do this with barelling, but might be better to separate these concerns
 import { authResolvers, GRAPHQLAPI } from './../modules'
 import { authLink } from './../modules'
@@ -51,11 +46,9 @@ export class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <StyleProvider style={getTheme(variables)}>
-          <Router>
-            <UserRoutes/>
-          </Router>
-        </StyleProvider>
+        <Router>
+          <UserRoutes/>
+        </Router>
       </ApolloProvider>
     )
   }

@@ -1,6 +1,6 @@
 import React from 'react'
+import { View } from 'react-native'
 import { Route } from 'react-router-native'
-import { Container } from 'native-base'
 import { TopNav } from './../components'
 
 // Possible example of a layout component working with react-router
@@ -10,10 +10,10 @@ import { TopNav } from './../components'
 export const CoreLayout = ({ component: Component, ...rest}) => {
   return (
     <Route {...rest} render={props => (
-      <Container>
-        <TopNav history={props.history} location={props.location}/>
-        <Component {...props} />
-      </Container>
+        <View>
+          <TopNav history={props.history} location={props.location}/>
+          <Component {...props} />
+        </View>
     )} />
   )
 }

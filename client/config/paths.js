@@ -58,13 +58,9 @@ module.exports = {
   nativeSrc: resolveApp('src/index.native.js'),
   nativeModules: [
     'node_modules/react-native-vector-icons',
-    'node_modules/native-base/dist/src',
-    'node_modules/native-base-shoutem-theme/',
-    'node_modules/react-native-keyboard-aware-scroll-view',
-    'node_modules/react-native-drawer',
-    'node_modules/react-native-easy-grid',
     'node_modules/@expo/vector-icons',
     'node_modules/expo/src',
-    'node_modules/native-base/node_modules/react-native-vector-icons/lib/'
+    'node_modules/native-base/node_modules/react-native-vector-icons/lib/',
+    'node_modules/react-native-elements/src'
   ].map(resolveApp)
 };
