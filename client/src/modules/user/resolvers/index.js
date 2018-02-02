@@ -4,8 +4,8 @@ import { LOGINAPI } from './../../core'
 
 export const authResolvers = {
   defaults: {
-    login: {
-      __typename: 'login',
+    auth: {
+      __typename: 'auth',
       token: null,
       status: null,
       error: null,
@@ -14,7 +14,7 @@ export const authResolvers = {
   },
   resolvers: {
     Mutation: {
-      login: async (_, { email, password }, { cache }) => {
+      auth: async (_, { email, password }, { cache }) => {
 
         const data = {
           email,
@@ -32,7 +32,7 @@ export const authResolvers = {
 
           if(result.status !== 200) {
             return {
-              __typename: 'login',
+              __typename: 'auth',
               token: null,
               error: true,
               isAuthenticated: false,
@@ -41,14 +41,14 @@ export const authResolvers = {
             const body = await result.json()
 
             const data = {
-              __typename: 'login',
+              __typename: 'auth',
               token: body.token,
               error: null,
               isAuthenticated: true,
             }
 
             cache.writeData({ data })
-            
+
             return data
           }
         } catch(e) {
