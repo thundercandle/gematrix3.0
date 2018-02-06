@@ -61,6 +61,7 @@ module.exports = {
     'node_modules/@expo/vector-icons',
     'node_modules/expo/src',
     'node_modules/native-base/node_modules/react-native-vector-icons/lib/',
-    'node_modules/react-native-elements/src'
+    'node_modules/react-native-elements/src',
+    'node_modules/react-native-web-linear-gradient/src'
   ].map(resolveApp)
 };

@@ -38,7 +38,7 @@ export class Login extends Component {
 
   render() {
     return (
-      <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
+      <View style={styles.loginContainer}>
         <LoginBox>
           <AuthMutation email={this.state.email} password={this.state.password}>
           { triggerMutation => (
