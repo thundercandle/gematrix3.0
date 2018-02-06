@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { KeyboardAvoidingView } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 
-import { Button } from 'react-native-elements';
+import { FormInput, FormLabel } from './../../components'
 
-import { LoginLayout } from '../components'
+import { LoginBox } from '../components'
+import { AuthMutation } from './../graphql'
 // import { loginStyles as styles } from './../styles'
-// import { LoginMutation } from './../graphql'
 
 export class Login extends Component {
   state = {
@@ -14,7 +14,7 @@ export class Login extends Component {
     error: null
   }
 
-  submitLogin(triggerMutation) {
+  login(triggerMutation) {
     // return a function that will make the mutation trigger accessible
     // This allows us to get the result of the mutation
     return async () => {
@@ -38,26 +38,28 @@ export class Login extends Component {
 
   render() {
     return (
-      <LoginLayout>
-        <Button
-        title='BUTTON'
-        backgroundColor='red'
-        loadingRight={true}
-        raised={true}
-        onPress={() => console.log("pressed")}
-        />
-
-        <Button
-        raised
-        icon={{name: 'cached'}}
-        title='BUTTON WITH ICON' />
-
-        <Button
-        large
-        iconRight={{name: 'code'}}
-        title='LARGE WITH RIGHT ICON' />
-
-      </LoginLayout>
+      <View style={{justifyContent: 'center', flex: 1, alignItems: 'center'}}>
+        <LoginBox>
+          <AuthMutation email={this.state.email} password={this.state.password}>
+          { triggerMutation => (
+            <View>
+              <FormLabel>Email</FormLabel>
+              <FormInput onChangeText={text => this.setState({...this.state, email: text})}/>
+              <FormLabel>Password</FormLabel>
+              <FormInput onChangeText={text => this.setState({...this.state, password: text})}/>
+            </View>
+          )}
+          </AuthMutation>
+        </LoginBox>
+      </View>
     )
   }
 }
+
+const styles = StyleSheet.create({
+  loginContainer: {
+    justifyContent: 'center',
+    flex: 1,
+    alignItems: 'center'
+  }
+})

@@ -4,3 +4,6 @@ export const breakpoints = {
   tablet: 839,
   desktop: 1024
 }
+
+export const desktopPadding = 75
+export const mobilePadding = 30

@@ -18,6 +18,6 @@ export class MediaQuery extends Component {
   }
 
   render() {
-    return this.props.children(this.queryWidth(this.props.query))
+    return this.props.children(this.queryWidth(this.props.isSmaller))
   }
 }
