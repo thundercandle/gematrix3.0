@@ -8,7 +8,7 @@ import {
   PRIMARY_DARK
  } from './../../core'
 
-export const TopNav = ({ location, history }) => (
+export const Topnav = ({ location, history }) => (
     <LinearGradient
       colors={[PRIMARY_COLOR, PRIMARY_DARK]}
       start={{x: 0.0, y: 1}}
