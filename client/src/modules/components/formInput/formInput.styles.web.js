@@ -5,7 +5,7 @@ import { StyleSheet } from 'react-native'
 export default StyleSheet.create({
   inputField: {
     height: 40,
-    borderColor: 'none',
+    borderColor: 'transparent',
     borderBottomWidth: 1,
     borderBottomColor: '#fff',
     color: '#fff',

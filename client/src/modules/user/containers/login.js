@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { View, StyleSheet, KeyboardAvoidingView, Text, ScrollView } from 'react-native'
 
-import { FormInput, FormLabel } from './../../components'
-
-import { LoginBox } from '../components'
 import { AuthMutation } from './../graphql'
-// import { loginStyles as styles } from './../styles'
+
+import {
+  FormInput,
+  FormLabel,
+  FormValidationMessage,
+  Button
+ } from './../../components'
+
+import { LoginBox, Logo } from '../components'
 
 import {
   LinearGradient,
   PRIMARY_COLOR,
-  SECONDARY_COLOR
+  SECONDARY_COLOR,
+  BRAND_COLOR
  } from './../../core'
 
 export class Login extends Component {
@@ -21,23 +27,27 @@ export class Login extends Component {
   }
 
   login(triggerMutation) {
+    const { history } = this.props
     // return a function that will make the mutation trigger accessible
     // This allows us to get the result of the mutation
     return async () => {
       const result = await triggerMutation()
 
-      // Show basic error
+      console.log(result)
       if(result.error) {
         this.setState({
           ...this.state,
-          error: result.error
+          error: true
         })
       } else {
-        // Else login was a success, so remove error and redirect
         this.setState({
           ...this.state,
+          email: "",
+          password: "",
           error: null
         })
+
+        history.push('/home')
       }
     }
   }
@@ -46,18 +56,37 @@ export class Login extends Component {
     return (
       <LinearGradient style={{flex: 1}}colors={[SECONDARY_COLOR, PRIMARY_COLOR]}>
         <KeyboardAvoidingView
-          keyboardVerticalOffset={10}
+          keyboardVerticalOffset={100}
           behavior='padding'
           style={styles.loginContainer}
         >
           <LoginBox>
+            <Logo/>
+            <Text style={styles.mainText}> Identity Verification </Text>
             <AuthMutation email={this.state.email} password={this.state.password}>
             { triggerMutation => (
-              <View >
+              <View>
+                { this.state.error &&
+                  <FormValidationMessage containerStyle={{alignSelf: 'center', backgroundColor: 'transparent'}}>
+                    Username or Password incorrect.
+                  </FormValidationMessage>
+                }
                 <FormLabel>Email</FormLabel>
-                <FormInput onChangeText={text => this.setState({...this.state, email: text})}/>
+                <FormInput
+                  onChangeText={text => this.setState({...this.state, email: text})}
+                />
                 <FormLabel>Password</FormLabel>
-                <FormInput onChangeText={text => this.setState({...this.state, password: text})}/>
+                <FormInput
+                  containerStyle={{marginBottom: 40}}
+                  onChangeText={text => this.setState({...this.state, password: text})}
+                />
+                <Button
+                  buttonStyle={{width: 300, alignSelf: 'center', marginRight: 20}}
+                  title="Login"
+                  onPress={this.login(triggerMutation)}
+                  outline
+                  rounded
+                  />
               </View>
             )}
             </AuthMutation>
@@ -73,5 +102,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     flex: 1,
     alignItems: 'center'
+  },
+  mainText: {
+    fontSize: 32,
+    alignSelf: 'center',
+    color: BRAND_COLOR,
+    backgroundColor: 'transparent',
+    marginBottom: 20
   }
 })
