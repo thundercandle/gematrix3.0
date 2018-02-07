@@ -5,12 +5,15 @@ import { Header } from 'react-native-elements'
 import {
   LinearGradient,
   PRIMARY_COLOR,
-  SECONDARY_COLOR
+  PRIMARY_DARK
  } from './../../core'
 
 export const TopNav = ({ location, history }) => (
-    <LinearGradient colors={[PRIMARY_COLOR, SECONDARY_COLOR]}>
-    { console.log(LinearGradient) }
+    <LinearGradient
+      colors={[PRIMARY_COLOR, PRIMARY_DARK]}
+      start={{x: 0.0, y: 1}}
+      end={{x: 0.5, y: 1.0}}
+    >
       <Header outerContainerStyles={styles.topnav}>
         <Text style={styles.link}>Gematrix</Text>
       </Header>
@@ -20,6 +23,7 @@ export const TopNav = ({ location, history }) => (
 const styles = StyleSheet.create({
   topnav: {
     backgroundColor: 'transparent',
+    borderBottomWidth: 0,
     ...Platform.select({
       web: {
         height: 50

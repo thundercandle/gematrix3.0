@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native'
 
 import { FormInput, FormLabel } from './../../components'
 
 import { LoginBox } from '../components'
 import { AuthMutation } from './../graphql'
 // import { loginStyles as styles } from './../styles'
+
+import {
+  LinearGradient,
+  PRIMARY_COLOR,
+  SECONDARY_COLOR
+ } from './../../core'
 
 export class Login extends Component {
   state = {
@@ -38,20 +44,26 @@ export class Login extends Component {
 
   render() {
     return (
-      <View style={styles.loginContainer}>
-        <LoginBox>
-          <AuthMutation email={this.state.email} password={this.state.password}>
-          { triggerMutation => (
-            <View>
-              <FormLabel>Email</FormLabel>
-              <FormInput onChangeText={text => this.setState({...this.state, email: text})}/>
-              <FormLabel>Password</FormLabel>
-              <FormInput onChangeText={text => this.setState({...this.state, password: text})}/>
-            </View>
-          )}
-          </AuthMutation>
-        </LoginBox>
-      </View>
+      <LinearGradient style={{flex: 1}}colors={[SECONDARY_COLOR, PRIMARY_COLOR]}>
+        <KeyboardAvoidingView
+          keyboardVerticalOffset={10}
+          behavior='padding'
+          style={styles.loginContainer}
+        >
+          <LoginBox>
+            <AuthMutation email={this.state.email} password={this.state.password}>
+            { triggerMutation => (
+              <View >
+                <FormLabel>Email</FormLabel>
+                <FormInput onChangeText={text => this.setState({...this.state, email: text})}/>
+                <FormLabel>Password</FormLabel>
+                <FormInput onChangeText={text => this.setState({...this.state, password: text})}/>
+              </View>
+            )}
+            </AuthMutation>
+          </LoginBox>
+        </KeyboardAvoidingView>
+      </LinearGradient>
     )
   }
 }

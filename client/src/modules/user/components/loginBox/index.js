@@ -8,12 +8,9 @@ export const LoginBox = ({ children }) => (
   <MediaQuery isSmaller={breakpoints.largeMobile}>
     { isSmaller => isSmaller
       ?
-      <KeyboardAvoidingView
-        keyboardVerticalOffset={10}
-        behavior='padding'
-      >
+      <View style={{padding: 10}}>
         { children }
-      </KeyboardAvoidingView>
+      </View>
       :
       <View style={styles.box}>
           { children }
