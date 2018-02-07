@@ -1,14 +1,18 @@
 import React from 'react'
-import { View, KeyboardAvoidingView } from 'react-native'
+import { View } from 'react-native'
 
-import { MediaQuery, breakpoints } from './../../../core'
+import {
+  MediaQuery,
+  breakpoints,
+  PADDING_SM
+} from './../../../core'
 import { styles } from './loginBox.styles'
 
 export const LoginBox = ({ children }) => (
   <MediaQuery isSmaller={breakpoints.largeMobile}>
     { isSmaller => isSmaller
       ?
-      <View style={{padding: 10}}>
+      <View style={{padding: PADDING_SM}}>
         { children }
       </View>
       :

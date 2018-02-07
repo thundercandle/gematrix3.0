@@ -8,6 +8,6 @@ export const Logo = () => (
     name='ios-planet'
     type='ionicon'
     color={ BRAND_COLOR }
-    size={216}
+    size={165}
   />
 )

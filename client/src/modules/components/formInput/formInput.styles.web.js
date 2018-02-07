@@ -1,6 +1,7 @@
 // Styling for web
 
 import { StyleSheet } from 'react-native'
+import { PADDING_SM } from './../../core'
 
 export default StyleSheet.create({
   inputField: {
@@ -9,7 +10,7 @@ export default StyleSheet.create({
     borderBottomWidth: 1,
     borderBottomColor: '#fff',
     color: '#fff',
-    padding: 5,
+    padding: PADDING_SM,
     fontSize: 18
   }
 })
