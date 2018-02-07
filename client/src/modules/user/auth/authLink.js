@@ -10,6 +10,7 @@ export const authLink = setContext((_, { headers, cache }) => {
 
   const result = cache.readQuery({query})
 
+  console.log("### Inside auth link function for sending JWT token")
   console.log(result)
   // get the authentication token from local storage if it exists
   // co

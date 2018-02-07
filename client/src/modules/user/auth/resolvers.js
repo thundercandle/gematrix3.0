@@ -15,7 +15,6 @@ export const authResolvers = {
   resolvers: {
     Mutation: {
       auth: async (_, { email, password }, { cache }) => {
-
         const data = {
           email,
           password
@@ -31,12 +30,16 @@ export const authResolvers = {
           })
 
           if(result.status !== 200) {
-            return {
+            const data = {
               __typename: 'auth',
               token: null,
               error: true,
               isAuthenticated: false,
             }
+
+            cache.writeData({ data })
+
+            return data
           } else {
             const body = await result.json()
 
@@ -56,6 +59,18 @@ export const authResolvers = {
           return null
         }
       }
+    },
+    logout: (_, args, { cache }) => {
+      const data = {
+        __typename: 'auth',
+        token: null,
+        error: null,
+        isAuthenticated: false,
+      }
+
+      cache.writeData(data)
+
+      return data
     }
   }
 }

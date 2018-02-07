@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { View, StyleSheet, KeyboardAvoidingView, Text, ScrollView } from 'react-native'
+import { View, StyleSheet, KeyboardAvoidingView } from 'react-native'
+import { Text } from 'react-native-elements'
 
 import { AuthMutation } from './../graphql'
 
@@ -33,7 +34,6 @@ export class Login extends Component {
     return async () => {
       const result = await triggerMutation()
 
-      console.log(result)
       if(result.error) {
         this.setState({
           ...this.state,
@@ -61,16 +61,19 @@ export class Login extends Component {
           style={styles.loginContainer}
         >
           <LoginBox>
+            <Text h1 style={styles.header}>GEMATRIX</Text>
             <Logo/>
             <Text style={styles.mainText}> Identity Verification </Text>
             <AuthMutation email={this.state.email} password={this.state.password}>
             { triggerMutation => (
               <View>
-                { this.state.error &&
-                  <FormValidationMessage containerStyle={{alignSelf: 'center', backgroundColor: 'transparent'}}>
+                <View style={{height: 40}}>
+                  { this.state.error &&
+                    <FormValidationMessage containerStyle={{alignSelf: 'center', backgroundColor: 'transparent'}}>
                     Username or Password incorrect.
-                  </FormValidationMessage>
-                }
+                    </FormValidationMessage>
+                  }
+                </View>
                 <FormLabel>Email</FormLabel>
                 <FormInput
                   onChangeText={text => this.setState({...this.state, email: text})}
@@ -98,6 +101,11 @@ export class Login extends Component {
 }
 
 const styles = StyleSheet.create({
+  header: {
+    backgroundColor: 'transparent',
+    alignSelf: 'center',
+    color: BRAND_COLOR,
+  },
   loginContainer: {
     justifyContent: 'center',
     flex: 1,
@@ -108,6 +116,6 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     color: BRAND_COLOR,
     backgroundColor: 'transparent',
-    marginBottom: 20
+    marginBottom: 10
   }
 })

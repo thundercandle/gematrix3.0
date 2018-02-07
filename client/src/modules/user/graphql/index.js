@@ -25,7 +25,7 @@ const AUTH_MUTATION = gql`
   }
 `
 
-const mutationResultToLogin = () =>
+const mutationResultToAuth = () =>
   result => {
     if (result.errors || !result.data) {
       throw new Error("Failed to mutate")
@@ -41,7 +41,7 @@ const mapMutationToProps = ({mutate}) => ({
     return mutate({
       variables: { email, password }
     })
-    .then(mutationResultToLogin())
+    .then(mutationResultToAuth())
   }
 })
 
