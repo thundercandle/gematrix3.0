@@ -5,10 +5,10 @@ import { TopNav, Container } from './../../components'
 // Not sure yet on passing through functions that change state, such as
 // showing back arrows to navigate backwards
 
-export const CoreLayout = ({children, history, location}) => {
+export const CoreLayout = ({children, history, location, showNav=true}) => {
   return (
     <Container>
-      <TopNav history={history} location={location}/>
+      { showNav && <TopNav history={history} location={location}/>}
       { children }
     </Container>
   )

@@ -7,6 +7,6 @@ import { CoreLayout, AppRoute } from './../core'
 export const UserRoutes = () => (
   <Switch>
     <Redirect exact from='/' to='/login'/>
-    <AppRoute exact path='/login' layout={CoreLayout} component={Login}/>
+    <AppRoute exact path='/login' layout={CoreLayout} showNav={false} component={Login}/>
   </Switch>
 )
