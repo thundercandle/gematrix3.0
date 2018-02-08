@@ -6,5 +6,6 @@ export const HomeRoutes = [{
   exact: true,
   component: Home,
   showNav: true,
-  layout: CoreLayout
+  layout: CoreLayout,
+  authenticate: true
 }]

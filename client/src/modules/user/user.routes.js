@@ -7,5 +7,5 @@ export const UserRoutes = [{
   component: Login,
   showNav: false,
   layout: CoreLayout,
-  private: true
+  authenticate: false
 }]
