@@ -31,28 +31,32 @@ export const authResolvers = {
 
           if(result.status !== 200) {
             const data = {
-              __typename: 'auth',
-              token: null,
-              error: true,
-              isAuthenticated: false,
+              auth: {
+                __typename: 'auth',
+                token: null,
+                error: true,
+                isAuthenticated: false,
+              }
             }
 
             cache.writeData({ data })
 
-            return data
+            return data.auth
           } else {
             const body = await result.json()
 
             const data = {
-              __typename: 'auth',
-              token: body.token,
-              error: null,
-              isAuthenticated: true,
+              auth: {
+                __typename: 'auth',
+                token: body.token,
+                error: null,
+                isAuthenticated: true,
+              }
             }
 
             cache.writeData({ data })
 
-            return data
+            return data.auth
           }
         } catch(e) {
           console.log(e)
@@ -62,10 +66,12 @@ export const authResolvers = {
     },
     logout: (_, args, { cache }) => {
       const data = {
-        __typename: 'auth',
-        token: null,
-        error: null,
-        isAuthenticated: false,
+        auth: {
+          __typename: 'auth',
+          token: null,
+          error: null,
+          isAuthenticated: false,
+        }
       }
 
       cache.writeData(data)
