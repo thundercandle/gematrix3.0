@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Switch, Redirect } from 'react-router-native'
+import { Switch, Redirect, Route } from 'react-router-native'
 
 // Apollo dependencies
 import { AsyncStorage, View } from 'react-native'
@@ -53,10 +53,6 @@ const client = new ApolloClient({
 })
 
 // Set up routes from export route objects in modules
-const routes = [
-  ...UserRoutes,
-  ...HomeRoutes
-]
 
 const generateRoutes = routesArr =>
   routesArr.map((props, key) => (
@@ -71,7 +67,8 @@ export class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <Switch>
-            { generateRoutes(routes) }
+            <Route component={UserRoutes}/>
+            <Route component={HomeRoutes}/>
             <Redirect from='*' to='/login'/>
           </Switch>
         </Router>

@@ -1,11 +1,13 @@
-import { Login } from './containers'
-import { CoreLayout } from './../core'
+import React from 'react'
+import { Switch } from 'react-router-native'
 
-export const UserRoutes = [{
-  path: '/login',
-  exact: true,
-  component: Login,
-  showNav: false,
-  layout: CoreLayout,
-  authenticate: false
-}]
+import { Login } from './containers'
+import { CoreLayout, AppRoute } from './../core'
+
+export const UserRoutes = () => {
+  return (
+    <Switch>
+      <AppRoute exact path="/login" component={Login} showNav={false} layout={CoreLayout}/>
+    </Switch>
+  )
+}

@@ -1,11 +1,12 @@
+import React from 'react'
+import { Switch } from 'react-router-native'
 import { Home } from './home'
-import { CoreLayout } from './../core'
+import { CoreLayout, AppRoute } from './../core'
 
-export const HomeRoutes = [{
-  path: '/home',
-  exact: true,
-  component: Home,
-  showNav: true,
-  layout: CoreLayout,
-  authenticate: true
-}]
+export const HomeRoutes = () => {
+return (
+    <Switch>
+      <AppRoute exact path="/home" component={Home} layout={CoreLayout} authenticate/>
+    </Switch>
+  )
+}
