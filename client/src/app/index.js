@@ -12,9 +12,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 import fetch from 'cross-fetch'
 // import merge from 'lodash.merge';
 
-// Custom router to work with web and mobile
-import { Router } from './../modules'
-
 // I can do this with barelling, but might be better to separate these concerns
 import {
   GRAPHQLAPI,
@@ -22,9 +19,10 @@ import {
   authResolvers,
   authLink,
 
-  AppRoute,
+  Router,
   HomeRoutes,
   UserRoutes,
+  NotebookRoutes
 } from './../modules'
 
 // Routes
@@ -52,13 +50,6 @@ const client = new ApolloClient({
   storage: AsyncStorage
 })
 
-// Set up routes from export route objects in modules
-
-const generateRoutes = routesArr =>
-  routesArr.map((props, key) => (
-    <AppRoute {...props} key={key}/>
-  ))
-
 export class App extends Component {
   render() {
     // Map routes and add them to a
@@ -66,11 +57,14 @@ export class App extends Component {
     return (
       <ApolloProvider client={client}>
         <Router>
-          <Switch>
-            <Route component={UserRoutes}/>
+          <View style={{height: '100%'}}>
             <Route component={HomeRoutes}/>
-            <Redirect from='*' to='/login'/>
-          </Switch>
+            <Route component={UserRoutes}/>
+            <Route component={NotebookRoutes}/>
+            <Switch>
+              <Redirect exact from="/" to="/notebooks"/>
+            </Switch>
+          </View>
         </Router>
       </ApolloProvider>
     )
